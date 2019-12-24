@@ -9,7 +9,8 @@
 ((): 
 ()): 
 (*): 
-(+): 
+(+): Returns sum of L and R
+   : Returns an interweaved block made of l and r
 (,): 
 (-): 
 (.): 
@@ -89,6 +90,13 @@
 (x): 
 (y): 
 (z): 
+
+Arguments:
+
+L -> Left Argument
+R -> Right Argument
+l -> Left block
+r -> Right block
 
 // Page template generated using the following Keg script
 
