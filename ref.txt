@@ -1,18 +1,21 @@
-( ): 
-(!): 
-("): 
-(#): 
+( ): NOP. Different to Keg where spaces do things.
+(!): Returns length of L if iterable
+   : Returns factorial of L otherwise
+("): Start a string
+(#): Comment
 ($): 
 (%): 
 (&): 
-('): 
+('): Escape next character
 ((): 
 ()): 
-(*): 
+(*): Returns L * R
+   : Returns every possible permutation of l and r
 (+): Returns sum of L and R
    : Returns an interweaved block made of l and r
 (,): 
-(-): 
+(-): Returns L - R
+   : Returns a block with elements in r removed from l
 (.): 
 (/): 
 (0): 
@@ -35,13 +38,13 @@
 (A): 
 (B): 
 (C): 
-(D): 
+(D): Decrement L
 (E): 
 (F): 
 (G): 
-(H): 
+(H): Havle L
 (I): 
-(J): 
+(J): Join L based on R
 (K): 
 (L): 
 (M): 
@@ -49,7 +52,8 @@
 (O): 
 (P): 
 (Q): 
-(R): 
+(R): Repeat L, R times
+   : Repeatedly evaluate l, R times
 (S): 
 (T): 
 (U): 
@@ -81,7 +85,7 @@
 (o): 
 (p): 
 (q): 
-(r): 
+(r): Range from L to R
 (s): 
 (t): 
 (u): 
