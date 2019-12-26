@@ -38,3 +38,15 @@ Keg got 7 bytes on this challenge (first place btw)
 Note that this uses a reverse token flag. But that's what the keg answer does. 
 
 6 bytes (Ket) vs 7 bytes (Keg). 
+
+## N(e(s(t))) a string
+
+Keg got 12 bytes
+
+    M\(+\)*!
+ 
+    ININIM
+    Add(Map(input, "("), Times(")", length(input)))
+    
+`--mapoffbyone`
+8 bytes (Ket) vs 12 bytes (Keg)
