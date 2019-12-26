@@ -10,25 +10,25 @@ R R* R& R! --> Right argument -- implicit/whatever is to the left
 
 `{...}` means that the expressions are blocked together
 
-`ND` -> `N I R`
+- `ND` -> `N I R`
 
-`SN` -> `S(N)`
-`Ss` -> `S(s(R))`
-`SI` -> `S(R) I R*`
+- `SN` -> `S(N)`
+- `Ss` -> `S(s(R))`
+- `SI` -> `S(R) I R*`
 
-`IN` -> `L I S`
-`IS` -> `L I S(R*)`
-`Ii` -> `{L I R} i R*`
+- `IN` -> `L I S`
+- `IS` -> `L I S(R*)`
+- `Ii` -> `{L I R} i R*`
 
-`SNs` -> `S(N)s(R)`
-`SNI` -> `S(N) I R`
-`SsN` -> `S(s(N))`
-`SsŠ` -> `S(s(Š(R)))`
-`SsI` -> `S(s(R)) I R*`
-`SIN` -> `S(R) I N`
-`SIs` -> `S(R) I s(R*)`
-`SIi` -> `S(R) I {L* i R*}`
+- `SNs` -> `S(N)s(R)`
+- `SNI` -> `S(N) I R`
+- `SsN` -> `S(s(N))`
+- `SsŠ` -> `S(s(Š(R)))`
+- `SsI` -> `S(s(R)) I R*`
+- `SIN` -> `S(R) I N`
+- `SIs` -> `S(R) I s(R*)`
+- `SIi` -> `S(R) I {L* i R*}`
 
-`INS` -> `L I N S(*R)`
+- `INS` -> `L I N S(*R)`
 
 
