@@ -22,7 +22,7 @@ patterns = ["020", "021", "022", "02", "10", "11", "12", "20", "21", "22",
 pattern = ""
 while len(arities):
     if pattern in patterns and pattern + str(arities[-1][0]) not in patterns:
-        exprs += [pattern, expr]
+        exprs.append([pattern, expr])
         expr = []
         pattern = ""
         
@@ -31,8 +31,15 @@ while len(arities):
     arities.pop()
 
 if expr and pattern in patterns:
-    exprs += [pattern, expr]
+    exprs.append([pattern, expr])
     expr = []
     pattern = ""
 
 print(exprs)
+
+
+for exp in exprs:
+    pattern, fns = exp
+
+    if pattern == "020":
+        print(fns[1] + "(" + fns[0] + ",", fns[2] + ")")
