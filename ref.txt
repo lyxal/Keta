@@ -1,33 +1,31 @@
 ( ): NOP. Different to Keg where spaces do things.
-(!): Returns length of L if iterable
-   : Returns factorial of L otherwise
+(!): (iterable) Returns length of L
+   : (+ve integer) Returns factorial of L
+   : (float/-ve integer) Returns the number (at this point)
 ("): Start a string
 (#): Comment
 ($): 
 (%): 
 (&): 
-('): Escape next character
-((): 
-()): 
+('):
+((): Start array
+()): Close array
 (*): Returns L * R
-   : Returns every possible permutation of l and r
-(+): Returns sum of L and R
-   : Returns an interweaved block made of l and r
+(+): Returns L + R
 (,): 
 (-): Returns L - R
-   : Returns a block with elements in r removed from l
 (.): 
 (/): 
-(0): 
-(1): 
-(2): 
-(3): 
-(4): 
-(5): 
-(6): 
-(7): 
-(8): 
-(9): 
+(0): Number 0
+(1): Number 1
+(2): Number 2
+(3): Number 3
+(4): Number 4
+(5): Number 5
+(6): Number 6
+(7): Number 7
+(8): Number 8
+(9): Number 9
 (:): 
 (;): 
 (<): 
@@ -62,9 +60,9 @@
 (X): 
 (Y): 
 (Z): 
-([): 
-(\): 
-(]): 
+([): Grouping syntax
+(\): Escape next character
+(]): Grouping syntax
 (^): 
 (_): 
 (`): 
@@ -94,6 +92,9 @@
 (x): 
 (y): 
 (z): 
+({): Grouping syntax
+(}): Grouping syntax
+(^): Reverses argument
 
 Arguments:
 
