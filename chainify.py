@@ -67,3 +67,23 @@ for exp in exprs:
 
     elif pattern == "102":
         print(fns[2] + "(" + fns[0] + "(" + fns[1] + "), R)")
+
+    elif pattern == "110":
+        print(fns[0] + "(" + fns[1] + "(" + fns[2] + "))")
+
+    elif pattern == "111":
+        print(fns[0] + "(" + fns[1] + "(" + fns[2] + "(R)))")
+
+    elif pattern == "120":
+        print(fns[1] + "(" + fns[0] + "(R), " + fns[2] + ")")
+
+    elif pattern == "121":
+        print(fns[1] + "(" + fns[0] + "(R), " + fns[2] + "(R*))")
+
+    elif pattern == "122":
+        print(fns[1] + "(" + fns[0] + "(R), " + fns[2] + "(L*, R*))")
+
+    elif pattern == "202":
+        print(fns[2] + "(" + fns[0] + "(L, " + fns[1] + "), R*)")
+
+    
