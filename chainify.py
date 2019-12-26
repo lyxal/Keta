@@ -44,6 +44,12 @@ for exp in exprs:
     if pattern == "020":
         print(fns[1] + "(" + fns[0] + ", " + fns[2] + ")")
 
+    elif pattern == "021":
+        print(fns[1] + "(" + fns[0] + ", " + fns[2] + "(R))")
+
+    elif pattern == "022":
+        print(fns[1] + "(" + fns[0] + ", " + fns[2] + "(L, R))")
+
     elif pattern == "02":
         print(fns[1] + "(" + fns[0] + ", R)")
 
