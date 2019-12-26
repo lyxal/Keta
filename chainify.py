@@ -1,4 +1,4 @@
-dyads = "*+-/%@"
+dyads = "*+-/%@!&^:"
 monads = list(map(chr, range(ord("A"), ord("Z") + 1)))
 nilads = "1234567890"
 
@@ -16,7 +16,8 @@ for char in source:
 
 exprs = []
 expr = []
-patterns = ["020", "021", "022", "02", "10", "11", "12", "20", "21", "22",
+patterns = ["0", "1", "2",
+    "020", "021", "022", "02", "10", "11", "12", "20", "21", "22",
             "102", "110", "111", "112", "120", "121", "122",
             "202", "210", "211", "212", "220", "221", "222"]
 pattern = ""
@@ -41,7 +42,16 @@ print(exprs)
 for exp in exprs:
     pattern, fns = exp
 
-    if pattern == "020":
+    if pattern == "0":
+        print(fns[0])
+
+    elif pattern == "1":
+        print(fns[0] + "(R)")
+
+    elif pattern == "2":
+        print(fns[0] + "(L, R)")
+
+    elif pattern == "020":
         print(fns[1] + "(" + fns[0] + ", " + fns[2] + ")")
 
     elif pattern == "021":
