@@ -1,12 +1,12 @@
 # Different Block Patterns
 This is a list of how patterns are evaluated within Ket (ekg)
 
-Nilads: N n Ñ ñ --> Nilads
-Singles: S s Š ś --> Monads
-Infixes: I i Ī ī --> Dyads
+Nilads: N n Ñ --> Nilads
+Singles: S s Š  --> Monads
+Infixes: I i Ī --> Dyads
 
-L L* L& L! --> Left argument -- implicit/whatever is to the left
-R R* R& R! --> Right argument -- implicit/whatever is to the left
+L L* L& --> Left argument -- implicit/whatever is to the left
+R R* R& --> Right argument -- implicit/whatever is to the left
 
 `{...}` means that the expressions are blocked together
 
@@ -29,6 +29,13 @@ R R* R& R! --> Right argument -- implicit/whatever is to the left
 - `SIs` -> `S(R) I s(R*)`
 - `SIi` -> `S(R) I {L* i R*}`
 
-- `INS` -> `L I N S(*R)`
+- `INS` -> `L I N S(R*)`
+- `INi` -> `{L I N} i R*`
+- `ISN` -> `L I S(N)`
+- `ISs` -> `L I S(s(R*))`
+- `ISi` -> `{L D S(R*)} i R&`
+- `IiN` -> `{L I R} i N`
+- `IiS` -> `{L I R} i S(R*)`
+- `IiĪ` -> `{{L I R} i R*} Ī R&
 
 
