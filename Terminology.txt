@@ -1,0 +1,9 @@
+Nilad -> A function that doesn't take any inputs. Usually a constant
+Single -> A function that only takes a single input
+Infix -> A function that takes two arguments: left and right
+
+Left argument -> the expression to the leff of a function
+Right argument -> the expression to the right of a function
+
+Flow -> A complete line of blocks
+Block -> A series of Nilads, Singles and Infixes
