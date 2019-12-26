@@ -50,3 +50,12 @@ Keg got 12 bytes
     
 `--mapoffbyone`
 8 bytes (Ket) vs 12 bytes (Keg)
+
+## DDoouubbllee  SSppeeaakk
+Keg got 3 bytes
+
+    i
+    
+    interleave(input, input)
+    
+1 byte (Ket) vs 3 bytes (Keg)
