@@ -2,10 +2,13 @@
 This is a list of how patterns are evaluated within Ket (ekg)
 
 Nilads: N n Ñ --> Nilads
+
 Singles: S s Š  --> Monads
+
 Infixes: I i Ī --> Dyads
 
 L L* L& --> Left argument -- implicit/whatever is to the left
+
 R R* R& --> Right argument -- implicit/whatever is to the left
 
 `{...}` means that the expressions are blocked together
