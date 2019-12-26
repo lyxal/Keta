@@ -28,3 +28,13 @@ Psuedo:
     function main
         generate factors of input
         filter list by above flow (f)
+
+## Swap good and bad
+
+Keg got 7 bytes on this challenge (first place btw)
+
+    -"....
+
+Note that this uses a reverse token flag. But that's what the keg answer does. 
+
+6 bytes (Ket) vs 7 bytes (Keg). 
