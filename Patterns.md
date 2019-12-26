@@ -23,7 +23,6 @@ R R* R& --> Right argument -- implicit/whatever is to the left
 - `IS` -> `L I S(R*)`
 - `Ii` -> `{L I R} i R*`
 
-- `SNs` -> `S(N)s(R)`
 - `SNI` -> `S(N) I R`
 - `SsN` -> `S(s(N))`
 - `SsŠ` -> `S(s(Š(R)))`
@@ -32,7 +31,6 @@ R R* R& --> Right argument -- implicit/whatever is to the left
 - `SIs` -> `S(R) I s(R*)`
 - `SIi` -> `S(R) I {L* i R*}`
 
-- `INS` -> `L I N S(R*)`
 - `INi` -> `{L I N} i R*`
 - `ISN` -> `L I S(N)`
 - `ISs` -> `L I S(s(R*))`
