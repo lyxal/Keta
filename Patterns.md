@@ -39,6 +39,8 @@ R R* R& --> Right argument -- implicit/whatever is to the left
 - `ISi` -> `{L D S(R*)} i R&`
 - `IiN` -> `{L I R} i N`
 - `IiS` -> `{L I R} i S(R*)`
-- `IiĪ` -> `{{L I R} i R*} Ī R&
+- `IiĪ` -> `{{L I R} i R*} Ī R&`
+
+Blocks are evaluated using the triplet rules if possible, otherwise the pair rules are used, otherwise things are evaluated as is
 
 
