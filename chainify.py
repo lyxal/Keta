@@ -2,7 +2,7 @@ dyads = "*+-/%"
 monads = list(map(chr, range(ord("A"), ord("Z") + 1)))
 nilads = "1234567890"
 
-source = input()
+source = input()[::-1]
 arities = []
 for char in source:
     if char in dyads:
@@ -15,20 +15,22 @@ for char in source:
         arities.append((0, char))
 
 exprs = []
+expr = []
+patterns = ["02", "10", "11", "12", "20", "21", "22"]
+pattern = ""
 while len(arities):
-    # Try grouping triplets
+    if pattern in patterns:
+        exprs += [pattern, expr]
+        expr = []
+        pattern = ""
+        
+    pattern += str(arities[-1][0])
+    expr.append(arities[-1][1])
+    arities.pop()
 
-    if len(arities) - 3 >= 0:
-        exprs.append(arities[-3:])
-        del arities[-3:]
-
-    # Now, try grouping pair
-    elif len(arities) - 2 >= 0:
-        exprs.append(arities[-2:])
-        del arities[-2:]
-    else:
-        exprs.append(arities[-1])
-        del arities[-1]
+if not exprs and pattern in patterns:
+        exprs += [pattern, expr]
+        expr = []
+        pattern = ""
 
 print(exprs)
-        
