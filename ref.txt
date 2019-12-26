@@ -5,17 +5,17 @@
 ("): Start a string
 (#): Comment
 ($): 
-(%): 
+(%): Returns L % R
 (&): 
 ('):
 ((): Start array
 ()): Close array
 (*): Returns L * R
 (+): Returns L + R
-(,): 
+(,): Print argument
 (-): Returns L - R
 (.): 
-(/): 
+(/): Returns L / R
 (0): Number 0
 (1): Number 1
 (2): Number 2
@@ -26,17 +26,18 @@
 (7): Number 7
 (8): Number 8
 (9): Number 9
-(:): 
-(;): 
-(<): 
-(=): 
-(>): 
-(?): 
+(:): (Dyadic context) Use l as both sides
+   : (Otherwise) Double input
+(;): Decrement L
+(<): Return L < R
+(=): Return L == R
+(>): Return L > R
+(?): Input
 (@): 
 (A): 
 (B): 
 (C): 
-(D): Decrement L
+(D): 
 (E): 
 (F): 
 (G): 
@@ -50,8 +51,8 @@
 (O): 
 (P): 
 (Q): 
-(R): Repeat L, R times
-   : Repeatedly evaluate l, R times
+(R): (string, number) Repeat L, R times
+   : (block, number) Repeatedly evaluate l, R times
 (S): 
 (T): 
 (U): 
