@@ -1,8 +1,69 @@
 dyads = "*+-/%@!&^:"
 monads = list(map(chr, range(ord("A"), ord("Z") + 1)))
 nilads = "1234567890"
+syntax = "{}[]"
 
 source = input()[::-1]
+
+def balance(source):
+    '''
+
+    a[bc --> a[bc]
+    ab} --> {ab}
+    m{ab]c -> [m{ab}]c
+    
+    '''
+
+    final = ""
+    brackets = []
+    temp = ""
+    for char in source:
+        if char in "[{":
+            brackets.append(char)
+            final += char
+
+        elif char == "}":
+            if brackets:
+                if brackets[-1] == "{":
+                    final += char
+
+                else:
+                    final = "{" + final + "]}"
+
+                brackets.pop()
+
+            else:
+                final = "[" + final + "]"
+
+        elif char == "]":
+            if brackets:
+                if brackets[-1] == "[":
+                    final += char
+
+                else:
+                    final = "[" + final + "}]"
+
+                brackets.pop()
+
+            else:
+                final = "[" + final + "]"
+
+        else:
+            final += char
+
+    if brackets:
+        for char in brackets:
+            if char == "[":
+                final += "]"
+            else:
+                final += "}"
+    return final
+
+def chunkify(source):
+    chunks = []
+    in_bracket = 0
+    for char in source: pass
+
 arities = []
 for char in source:
     if char in dyads:
