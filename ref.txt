@@ -1,38 +1,37 @@
-( ): NOP. Different to Keg where spaces do things.
-(!): (iterable) Returns length of L
-   : (+ve integer) Returns factorial of L
-   : (float/-ve integer) Returns the number (at this point)
-("): Start a string
-(#): Comment
-($): 
-(%): Returns L % R
+Command | Description | Arity | Left | Right | Returns
+( ): NOP | NA | NA | NA
+(!): Length of right argument | 1 | NA | Iterable | length(right)
+   : Factorial of right argument | 1 | NA | Number | factorial(right)
+("): Start/close string | 0 | NA | NA | NA
+(#): Comment | NA | NA | NA | NA
+($):
+(%): 
 (&): 
-('):
-((): Start array
-()): Close array
-(*): Returns L * R
-(+): Returns L + R
-(,): Print argument
-(-): Returns L - R
+('): 
+((): 
+()): 
+(*): 
+(+): 
+(,): 
+(-): 
 (.): 
-(/): Returns L / R
-(0): Number 0
-(1): Number 1
-(2): Number 2
-(3): Number 3
-(4): Number 4
-(5): Number 5
-(6): Number 6
-(7): Number 7
-(8): Number 8
-(9): Number 9
-(:): (Dyadic context) Use l as both sides
-   : (Otherwise) Double input
-(;): Decrement L
-(<): Return L < R
-(=): Return L == R
-(>): Return L > R
-(?): Input
+(/): 
+(0): 
+(1): 
+(2): 
+(3): 
+(4): 
+(5): 
+(6): 
+(7): 
+(8): 
+(9): 
+(:): 
+(;): 
+(<): 
+(=): 
+(>): 
+(?): 
 (@): 
 (A): 
 (B): 
@@ -41,9 +40,9 @@
 (E): 
 (F): 
 (G): 
-(H): Havle L
+(H): 
 (I): 
-(J): Join L based on R
+(J): 
 (K): 
 (L): 
 (M): 
@@ -51,8 +50,7 @@
 (O): 
 (P): 
 (Q): 
-(R): (string, number) Repeat L, R times
-   : (block, number) Repeatedly evaluate l, R times
+(R): 
 (S): 
 (T): 
 (U): 
@@ -61,9 +59,9 @@
 (X): 
 (Y): 
 (Z): 
-([): Grouping syntax
-(\): Escape next character
-(]): Grouping syntax
+([): 
+(\): 
+(]): 
 (^): 
 (_): 
 (`): 
@@ -84,7 +82,7 @@
 (o): 
 (p): 
 (q): 
-(r): Range from L to R
+(r): 
 (s): 
 (t): 
 (u): 
@@ -93,18 +91,7 @@
 (x): 
 (y): 
 (z): 
-({): Grouping syntax
-(}): Grouping syntax
-(^): Reverses argument
-
-Arguments:
-
-L -> Left Argument
-R -> Right Argument
-l -> Left block
-r -> Right block
-
-// Page template generated using the following Keg script
-
- zɧ^(\(,,\),\:, ,
-,
+({): 
+(|): 
+(}): 
+(~): 
