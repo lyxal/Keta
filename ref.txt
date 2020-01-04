@@ -4,15 +4,20 @@ Command | Description | Arity | Left | Right | Returns
    : Factorial of right argument | 1 | NA | Number | factorial(right)
 ("): Start/close string | 0 | NA | NA | NA
 (#): Comment | NA | NA | NA | NA
-($):
-(%): 
-(&): 
+($): Sort the right argument | 1 | NA | Iterable | sorted(right)
+(%): Moduluo of left and right | 2 | Number | Number | left % right
+   : Formats a string | 2 | String | String | left.format(right)
+(&): Logical and | 2 | Any | Any | left && right
 ('): 
-((): 
-()): 
-(*): 
-(+): 
-(,): 
+((): Start a list | NA | NA | NA | NA
+()): End a list | NA | NA | NA | NA
+(*): Multiply left and right | 2 | Number | Number | left * right
+   : Repeat left by right times | 2 | Iterable | Number | left * right
+   : Product of iterables | 2 | Iterable | Iterable | list(itertools.product(left, right))
+(+): Add left and right | 2 | Number | Number | left + right
+   : Add left and right | 2 | String | String | left + right
+   : Append right to left | 2 | List | Any | left.append(right)
+(,): Separate list items | 0 | NA | NA | NA
 (-): 
 (.): 
 (/): 
