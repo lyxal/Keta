@@ -26,5 +26,5 @@ class Token():
 INSTRUCTION = "instruction"
 BLOCK = "block"
 STRING = "string"
-INTEGER = "integer"
+NUMBER = "number"
 ESCAPE = "escape"

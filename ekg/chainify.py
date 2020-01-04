@@ -1,12 +1,16 @@
 import Parse
 import TokenLib
 import string
+from Code_Token import *
+import functions
 
-dyads: str = string.punctuation
+dyads: str = string.punctuation + "i"
 monads: str = string.ascii_uppercase
 nilads: str = "1234567890"
 
-source: str = str(reversed(input()))
+self = lambda x, y: y
+
+
 
 def balance(source: str) -> str:
     
@@ -82,124 +86,254 @@ def arities(source: [TokenLib.Token]) -> [(int, TokenLib.Token)]:
         if token.get_name() == TokenLib.BLOCK:
             arity_list.append([0,
                                arities(token.get_data())])
-        
 
-'''
-arities = []
-for char in source:
-    if char in dyads:
-        arities.append((2, char))
+        elif str(token.get_value()) in dyads:
+            arity_list.append([2, token])
 
-    elif char in monads:
-        arities.append((1, char))
+        elif str(token.get_value()) in monads:
+            arity_list.append([1, token])
 
-    else:
-        arities.append((0, char))
+        else:
+            arity_list.append([0, token])
 
-exprs = []
-expr = []
-patterns = ["0", "1", "2",
-    "020", "021", "022", "02", "10", "11", "12", "20", "21", "22",
-            "102", "110", "111", "112", "120", "121", "122",
-            "202", "210", "211", "212", "220", "221", "222"]
-pattern = ""
-while len(arities):
-    if pattern in patterns and pattern + str(arities[-1][0]) not in patterns:
+    return arity_list
+
+def code_tokenify(arity_list: [(int, TokenLib.Token)]) -> [Code_Token]:
+    code_tokens = []
+    exprs = []
+    expr = []
+    patterns = ["0", "1", "2",
+        "020", "021", "022", "02", "10", "11", "12", "20", "21", "22",
+                "102", "110", "111", "112", "120", "121", "122",
+                "202", "210", "211", "212", "220", "221", "222"]
+    pattern = ""
+    while len(arity_list):
+        if (pattern in patterns and
+            pattern + str(arity_list[-1][0]) not in patterns):
+            exprs.append([pattern, expr])
+            expr = []
+            pattern = ""
+            
+        pattern += str(arity_list[-1][0])
+        expr.append(arity_list[-1][1])
+        arity_list.pop()
+
+    if expr and pattern in patterns:
         exprs.append([pattern, expr])
         expr = []
         pattern = ""
+
+
+    for expr in exprs:
+        arity_pattern, data = expr
+        ctkn = None
+        #print(arity_pattern, [m.get_data() for m in data])
+
+        if arity_pattern == "0":
+            # Nilad
+            ctkn = Code_Token(self, None, data[0].get_value())
+
+        elif arity_pattern == "1":
+            # Monad
+            ctkn = Code_Token(functions.search(data[0]),
+                              None, Relative_Argument)
+
+        elif arity_pattern == "2":
+            # Dyad
+            ctkn = Code_Token(functions.search(data[0]),
+                              Relative_Argument, Relative_Argument)
+
+        elif arity_pattern == "020":
+            # Nilad-Dyad-Nilad
+            ctkn = Code_Token(functions.search(data[1]),
+                              data[0].get_value(), data[2].get_value())
+
+        elif arity_pattern == "021":
+            # Nilad-Dyad-Monad
+            right = Code_Token(functions.search(data[2]),
+                              None, Relative_Argument)
+            ctkn = Code_Token(functions.search(data[1]),
+                              data[0].get_value(), right)
+
+        elif arity_pattern == "02":
+            # Nilad-Dyad
+            ctkn = Code_Token(functions.search(data[1]),
+                              data[0].get_value(), Relative_Argument)
+
+        elif arity_pattern == "10":
+            # Monad-Nilad
+            ctkn = Code_Token(functions.search(data[0]),
+                              None, data[1].get_value())
+
+        elif arity_pattern == "11":
+            # Monad-Monad
+            right = Code_Token(functions.search(data[1]),
+                               None, Relative_Argument)
+
+            ctkn = Code_Token(functions.search(data[0]),
+                              None, right)
+
+        elif arity_pattern == "12":
+            # Monad-Dyad
+            left = Code_Token(functions.search(data[0]),
+                              None, Relative_Argument)
+
+            ctkn = Code_Token(functions.search(data[1]),
+                              left, Relative_Argument)
+
+        elif arity_pattern == "20":
+            # Dyad-Nilad
+            ctkn = Code_Token(functions.search(data[0]),
+                              Relative_Argument, data[1].get_value())
         
-    pattern += str(arities[-1][0])
-    expr.append(arities[-1][1])
-    arities.pop()
+        elif arity_pattern == "21":
+            # Dyad-Monad
+            right = Code_Token(functions.search(data[1]),
+                               None, Relative_Argument)
 
-if expr and pattern in patterns:
-    exprs.append([pattern, expr])
-    expr = []
-    pattern = ""
+            ctkn = Code_Token(functions.search(data[0]),
+                              Relative_Argument, right)
 
-print(exprs)
+        elif arity_pattern == "22":
+            # Dyad-Dyad
+            left = Code_Token(functions.search(data[0]),
+                              Relative_Argument, Relative_Argument)
 
+            ctkn = Code_Token(functions.search(data[1]),
+                              left, Relative_Argument)
 
-for exp in exprs:
-    pattern, fns = exp
+        elif arity_pattern == "102":
+            # Monad-Nilad-Dyad
+            left = Code_Token(functions.search(data[0]),
+                              None, data[1].get_value())
 
-    if pattern == "0":
-        print(fns[0])
+            ctkn = Code_Token(functions.search(data[2]),
+                              left, Relative_Argument)
 
-    elif pattern == "1":
-        print(fns[0] + "(R)")
+        elif arity_pattern == "110":
+            # Monad-Monad-Nilad
+            right = Code_Token(functions.search(data[1]),
+                               None, data[2].get_value())
 
-    elif pattern == "2":
-        print(fns[0] + "(L, R)")
+            ctkn = Code_Token(functions.search(data[0]),
+                              None, right)
 
-    elif pattern == "020":
-        print(fns[1] + "(" + fns[0] + ", " + fns[2] + ")")
+        elif arity_pattern == "111":
+            # Monad-Monad-Monad
+            right_1 = Code_Token(functions.search(data[2]),
+                                 None, Relative_Argument)
 
-    elif pattern == "021":
-        print(fns[1] + "(" + fns[0] + ", " + fns[2] + "(R))")
+            right = Code_Token(functions.search(data[1]),
+                               None, right_1)
 
-    elif pattern == "022":
-        print(fns[1] + "(" + fns[0] + ", " + fns[2] + "(L, R))")
+            ctkn = Code_Token(functions.search(data[0]),
+                              None, right)
 
-    elif pattern == "02":
-        print(fns[1] + "(" + fns[0] + ", R)")
+        elif arity_pattern == "120":
+            # Monad-Dyad-Nilad
+            left = Code_Token(functions.search(data[0]),
+                               None, Relative_Argument)
 
-    elif pattern == "10":
-        print(fns[0] + "(" + fns[1] + ")")
+            ctkn = Code_Token(functions.search(data[1]),
+                              left, data[2].get_value())
 
-    elif pattern == "11":
-        print(fns[0] + "(" + fns[1] + "(R))")
+        elif arity_pattern == "121":
+            # Monad-Dyad-Monad
+            left = Code_Token(functions.search(data[0]),
+                              None, Relative_Argument)
 
-    elif pattern == "12":
-        print(fns[1] + "(" + fns[0] + ", " + "R)")
+            right = Code_Token(functions.search(data[2]),
+                               None, Relative_Argument)
 
-    elif pattern == "20":
-        print(fns[0] + "(L, " + fns[1] + ")")
+            ctkn = Code_Token(functions.search(data[1]),
+                              left, right)
 
-    elif pattern == "21":
-        print(fns[0] + "(L, " + fns[1] + ")")
+        elif arity_pattern == "122":
+            # Monad-Dyad-Dyad
+            left = Code_Token(functions.search(data[0]),
+                              None, Relative_Argument)
 
-    elif pattern == "22":
-        print(fns[1] + "(" + fns[0] + "(L, R), R*)")
+            right = Code_Token(functions.search(data[2]),
+                               Relative_Argument, Relative_Argument)
 
-    elif pattern == "102":
-        print(fns[2] + "(" + fns[0] + "(" + fns[1] + "), R)")
+            ctkn = Code_Token(functions.search(data[1]),
+                              left, right)
 
-    elif pattern == "110":
-        print(fns[0] + "(" + fns[1] + "(" + fns[2] + "))")
+        elif arity_pattern == "202":
+            # Dyad-Nilad-Dyad
+            left = Code_Token(functions.search(data[0]),
+                              Relative_Argument, data[1].get_value())
 
-    elif pattern == "111":
-        print(fns[0] + "(" + fns[1] + "(" + fns[2] + "(R)))")
+            ctkn = Code_Token(functions.search(data[2]),
+                              left, Relative_Argument)
 
-    elif pattern == "120":
-        print(fns[1] + "(" + fns[0] + "(R), " + fns[2] + ")")
+        elif arity_pattern == "210":
+            # Dyad-Monad-Nilad
+            right = Code_Token(functions.search(data[1]),
+                               None, data[2].get_value())
 
-    elif pattern == "121":
-        print(fns[1] + "(" + fns[0] + "(R), " + fns[2] + "(R*))")
+            ctkn = Code_Token(functions.search(data[0]),
+                              Relative_Argument, right)
 
-    elif pattern == "122":
-        print(fns[1] + "(" + fns[0] + "(R), " + fns[2] + "(L*, R*))")
+        elif arity_pattern == "211":
+            # Dyad-Monad-Monad
+            right_1 = Code_Token(functions.search(data[2]),
+                                 None, Relative_Argument)
 
-    elif pattern == "202":
-        print(fns[2] + "(" + fns[0] + "(L, " + fns[1] + "), R*)")
+            right = Code_Token(functions.search(data[1]),
+                              None, right_1)
 
-    elif pattern == "210":
-        print(fns[0] + "(L, " + fns[1] + "(" + fns[2] + "))")
+            ctkn = Code_Token(functions.search(data[0]),
+                              Relative_Argument, right)
 
-    elif pattern == "211":
-        print(fns[0] + "(L, " + fns[1] + "(" + fns[2] + "(R*)))")
+        elif arity_pattern == "212":
+            # Dyad-Monad-Dyad
+            right_1 = Code_Token(functions.search(data[1]),
+                                 None, Relative_Argument)
+            
+            left = Code_Token(functions.search(data[0]),
+                              Relative_Argument, right_1)
 
-    elif pattern == "212":
-        print(fns[2] + "(" + fns[0] + "(L, " + fns[1] + "(R*)), R&)")
+            ctkn = Code_Token(functions.search(data[2]),
+                              left, Relative_Argument)
 
-    elif pattern == "220":
-        print(fns[1] + "(" + fns[0] + "(L, R), " + fns[2] + ")")
+        elif arity_pattern == "220":
+            # Dyad-Dyad-Nilad
+            left = Code_Token(functions.search(data[0]),
+                              Relative_Argument, Relative_Argument)
 
-    elif pattern == "221":
-        print(fns[1] + "(" + fns[0] + "(L, R), " + fns[2] + "(R*))")
+            ctkn = Code_Token(functions.search(data[1]),
+                              left, data[2].get_value())
 
-    elif pattern == "222":
-        print(fns[2] + "(" + fns[1] + "(" + fns[0] + "(L, R), R*), R&)")
-'''
-    
+        elif arity_pattern == "221":
+            # Dyad-Dyad-Monad
+            left = Code_Token(functions.search(data[0]),
+                              Relative_Argument, Relative_Argument)
+
+            right = Code_Token(functions.search(data[2]),
+                               None, Relative_Argument)
+
+            ctkn = Code_Token(functions.search(data[1]),
+                              left, right)
+
+        elif arity_pattern == "222":
+            # Triple Dyad
+
+            left_1 = Code_Token(functions.search(data[0]),
+                              Relative_Argument, Relative_Argument)
+
+            left = Code_Token(functions.search(data[1]),
+                              left_1, Relative_Argument)
+
+            ctkn = Code_Token(functions.search(data[2]),
+                              left, Relative_Argument)
+            
+            
+        code_tokens.append(ctkn)
+
+    return code_tokens
+
+source: str = input()
+parser: Parse.Parser = Parse.Parser(source)
+x = code_tokenify(arities(parser.parse()[::-1]))
+print(x[0].execute())
