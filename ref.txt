@@ -1,4 +1,4 @@
-Command | Description | Arity | Left | Right | Returns
+Command | Description | Arity | Left | Right | Pythonish Representation
 ( ): NOP | NA | NA | NA
 (!): Length of right argument | 1 | NA | Iterable | length(right)
    : Factorial of right argument | 1 | NA | Number | factorial(right)
@@ -21,16 +21,16 @@ Command | Description | Arity | Left | Right | Returns
 (-): 
 (.): 
 (/): 
-(0): 
-(1): 
-(2): 
-(3): 
-(4): 
-(5): 
-(6): 
-(7): 
-(8): 
-(9): 
+(0): Number
+(1): Number
+(2): Number
+(3): Number
+(4): Number
+(5): Number
+(6): Number
+(7): Number
+(8): Number
+(9): Number
 (:): 
 (;): 
 (<): 
@@ -38,32 +38,32 @@ Command | Description | Arity | Left | Right | Returns
 (>): 
 (?): 
 (@): 
-(A): 
-(B): 
-(C): 
-(D): 
-(E): 
-(F): 
-(G): 
-(H): 
-(I): 
-(J): 
-(K): 
-(L): 
-(M): 
-(N): 
-(O): 
-(P): 
-(Q): 
-(R): 
-(S): 
-(T): 
-(U): 
-(V): 
-(W): 
-(X): 
-(Y): 
-(Z): 
+(A): Absolute value | 1 | NA | Number | abs(right)
+(B): Binary to base 10 | 1 | NA | Number | int(2, right)
+(C): Ceiling | 1 | NA | Number | math.ceil(right)
+(D): Double | 1 | NA | Number | right * 2
+(E): Eval | 1 | NA | String | ket_eval(right)
+(F): Factorise | 1 | NA | Number | find_factors(right)
+(G): Genrate range from 0 to right (inclusive) | 1 | NA | Number | range(0, right + 1)
+(H): Halve | 1 | NA | Number | right / 2
+(I): If statement | 2* | Expression | Block | if(expression, blocks)
+(J): Join x by y | 2 | Iterable | String | right.join(left)
+(K): Constant library | 1 | NA | Character | constants[right]
+(L): List range | 2 | Number | Number | range(left, right + 1)
+(M): Map function to iterable | 2 | Iterable | Block | map(right, left)
+(N): Negate | 1 | NA | Number | right * -1
+(O): One-dimensionify a list (flatten) | 1 | NA | Iterable | [item for sublist in l for item in sublist]
+(P): Permutation | 2 | Iterable | Number | itertools.permutations(left, right)
+(Q): Quit/terminate program | 0 | NA | NA | exit()
+(R): Reduce by block | 2 | Iterable | Block | functools.reduce(right, left)
+(S): Square | 2 | Iterable | Number | textwrap.wrap(left, right)
+(T): Top of stack | 1 | NA | Iterable | right[0]
+(U): Uniquify | 1 | NA | Iterable | unique(right)
+(V): Variable set | 2 | String | Any | left = right
+(W): While loop | 2 | Expression | Block | While(left, right)
+(X): Exclude/remove items | 2 | Iterable | Any | list(filter((right).__ne__, left))
+(Y): Loop variable
+(Z): Zip | 2 | Iterable | Iterable | zip(left, right)
 ([): 
 (\): 
 (]): 
