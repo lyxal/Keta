@@ -18,9 +18,9 @@ Command | Description | Arity | Left | Right | Pythonish Representation
    : Add left and right | 2 | String | String | left + right
    : Append right to left | 2 | List | Any | left.append(right)
 (,): Separate list items | 0 | NA | NA | NA
-(-): 
-(.): 
-(/): 
+(-): Subtraction | 2 | Number | Number | left - right
+(.): Special constants | 0 | NA | NA | NA
+(/): Divison | 2 | Number | Number | left / right
 (0): Number
 (1): Number
 (2): Number
@@ -31,18 +31,18 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 (7): Number
 (8): Number
 (9): Number
-(:): 
-(;): 
-(<): 
-(=): 
-(>): 
-(?): 
+(:): Double the input | 1 | NA | Any | [right, right]
+(;): Decrement | 1 | NA | Any | right - 1
+(<): Less than | 2 | Any | Any | left < right
+(=): Equality | 2 | Any | Any | left == right
+(>): Greater than | 2 | Any | Any | left > right
+(?): Input, eval'd | 0 | NA | NA | keta_eval(input())
 (@): 
 (A): Absolute value | 1 | NA | Number | abs(right)
 (B): Binary to base 10 | 1 | NA | Number | int(2, right)
 (C): Ceiling | 1 | NA | Number | math.ceil(right)
 (D): Double | 1 | NA | Number | right * 2
-(E): Eval | 1 | NA | String | ket_eval(right)
+(E): Eval | 1 | NA | String | keta_eval(right)
 (F): Factorise | 1 | NA | Number | find_factors(right)
 (G): Genrate range from 0 to right (inclusive) | 1 | NA | Number | range(0, right + 1)
 (H): Halve | 1 | NA | Number | right / 2
@@ -64,26 +64,26 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 (X): Exclude/remove items | 2 | Iterable | Any | list(filter((right).__ne__, left))
 (Y): Loop variable
 (Z): Zip | 2 | Iterable | Iterable | zip(left, right)
-([): 
-(\): 
-(]): 
+([): Start a block
+(\): Escape the next character
+(]): End a block
 (^): 
 (_): 
 (`): 
-(a): 
-(b): 
-(c): 
-(d): 
-(e): 
-(f): 
-(g): 
-(h): 
-(i): 
-(j): 
-(k): 
-(l): 
-(m): 
-(n): 
+(a): all | 1 | NA | Iterable | all(right)
+(b): binary representation | 1 | NA | Any | bin(right)
+(c): contains | 2 | Iterable | Any | right in left
+(d): divmod | 2 | Number | Number | divmod(left, right)
+(e): exec | 1 | NA | String | keta_exec(right)
+(f): filter | 2 | Iterable | Block | keta_fitler(left, right)
+(g): generate exclusive range | 1 | NA | Number | range(0, right)
+(h): hack/stride | 2 | Iterable | Iterable(Number, Number) | left[right[0]:right[1]]
+(i): loop variable 
+(j): loop variable
+(k): loop variable
+(l): Lookup/index | 2 | Iterable | Any | left.index(right)
+(m): maximum | 2 | Any | Any | max(left, right)
+(n): newline | 0 | NA | NA | NA
 (o): 
 (p): 
 (q): 
@@ -96,7 +96,7 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 (x): 
 (y): 
 (z): 
-({): 
-(|): 
-(}): 
+({): Start a block
+(|): Seperate items
+(}): End a block
 (~): 
