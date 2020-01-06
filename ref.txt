@@ -8,7 +8,7 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 (%): Moduluo of left and right | 2 | Number | Number | left % right
    : Formats a string | 2 | String | String | left.format(right)
 (&): Logical and | 2 | Any | Any | left && right
-('): 
+('): Delimit a variable name
 ((): Start a list | NA | NA | NA | NA
 ()): End a list | NA | NA | NA | NA
 (*): Multiply left and right | 2 | Number | Number | left * right
@@ -37,7 +37,7 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 (=): Equality | 2 | Any | Any | left == right
 (>): Greater than | 2 | Any | Any | left > right
 (?): Input, eval'd | 0 | NA | NA | keta_eval(input())
-(@): 
+(@): String ender
 (A): Absolute value | 1 | NA | Number | abs(right)
 (B): Binary to base 10 | 1 | NA | Number | int(2, right)
 (C): Ceiling | 1 | NA | Number | math.ceil(right)
@@ -67,9 +67,9 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 ([): Start a block
 (\): Escape the next character
 (]): End a block
-(^): 
-(_): 
-(`): 
+(^): Exponate
+(_): Truthify
+(`): String ender
 (a): all | 1 | NA | Iterable | all(right)
 (b): binary representation | 1 | NA | Any | bin(right)
 (c): contains | 2 | Iterable | Any | right in left
@@ -84,19 +84,19 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 (l): Lookup/index | 2 | Iterable | Any | left.index(right)
 (m): maximum | 2 | Any | Any | max(left, right)
 (n): newline | 0 | NA | NA | NA
-(o): 
-(p): 
-(q): 
-(r): 
-(s): 
-(t): 
-(u): 
-(v): 
-(w): 
-(x): 
-(y): 
-(z): 
+(o): or | 2 | Any | Any | left or right
+(p): print | 1 | NA | Any | print(right)
+(q): quoted | 1 | NA | Any | str(right)
+(r): repeat | 2 | Number | Block | repeat(right, left)
+(s): shape | 2 | Iterable | Number | shape(left, right)
+(t): tail of stack | 1 | NA | Iterable | right[-1]
+(u): uniquified sorted | 1 | NA | Iterable | sorted(uniquified(right))
+(v): variable get | 1 | NA | String | variable_name
+(w): wrap | 2 | Iterable | Number | left[::right]
+(x): index | 2 | Iterable | Number | left[right]
+(y): loop variable
+(z): z(s)leep | 1 | NA | Number | time.sleep(right)
 ({): Start a block
 (|): Seperate items
 (}): End a block
-(~): 
+(~): Random number
