@@ -1,4 +1,4 @@
-# Keta - Keyboard Tacit
+# Keta - (Ke)yboard (ta)cit
 
 Keg, but it somehow became infixed, and what the cool kids call "tacit"
 
