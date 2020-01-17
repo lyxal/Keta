@@ -1,5 +1,5 @@
 # Different Block Patterns
-This is a list of how patterns are evaluated within Ket (ekg)
+This is a list of how patterns are evaluated within Ket (ekg).
 
 Nilads: N n Ñ --> Nilads
 
@@ -39,6 +39,6 @@ R R* R& --> Right argument -- implicit/whatever is to the left
 - `IiS` -> `{L I R} i S(R*)`
 - `IiĪ` -> `{{L I R} i R*} Ī R&`
 
-Blocks are evaluated using the triplet rules if possible, otherwise the pair rules are used, otherwise things are evaluated as is
+Blocks are evaluated using the triplet rules if possible, otherwise the pair rules are used, otherwise expressions are evaluated as is.
 
 
