@@ -1,11 +1,11 @@
-Command | Description | Arity | Left | Right | Pythonish Representation
+Command : Description | Arity | Left | Right | Pythonish Representation
 ( ): NOP | NA | NA | NA
 (!): Length of right argument | 1 | NA | Iterable | length(right)
    : Factorial of right argument | 1 | NA | Number | factorial(right)
 ("): Start/close string | 0 | NA | NA | NA
 (#): Comment | NA | NA | NA | NA
 ($): Sort the right argument | 1 | NA | Iterable | sorted(right)
-(%): Moduluo of left and right | 2 | Number | Number | left % right
+(%): Modulo of left and right | 2 | Number | Number | left % right
    : Formats a string | 2 | String | String | left.format(right)
 (&): Logical and | 2 | Any | Any | left && right
 ('): Delimit a variable name
@@ -44,10 +44,10 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 (D): Double | 1 | NA | Number | right * 2
 (E): Eval | 1 | NA | String | keta_eval(right)
 (F): Factorise | 1 | NA | Number | find_factors(right)
-(G): Genrate range from 0 to right (inclusive) | 1 | NA | Number | range(0, right + 1)
+(G): Generate range from 0 to right (inclusive) | 1 | NA | Number | range(0, right + 1)
 (H): Halve | 1 | NA | Number | right / 2
 (I): If statement | 2* | Expression | Block | if(expression, blocks)
-(J): Join x by y | 2 | Iterable | String | right.join(left)
+(J): Join x with y | 2 | Iterable | String | right.join(left)
 (K): Constant library | 1 | NA | Character | constants[right]
 (L): List range | 2 | Number | Number | range(left, right + 1)
 (M): Map function to iterable | 2 | Iterable | Block | map(right, left)
@@ -67,7 +67,7 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 ([): Start a block
 (\): Escape the next character
 (]): End a block
-(^): Exponate
+(^): Exponentiate
 (_): Truthify
 (`): String ender
 (a): all | 1 | NA | Iterable | all(right)
@@ -75,7 +75,7 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 (c): contains | 2 | Iterable | Any | right in left
 (d): divmod | 2 | Number | Number | divmod(left, right)
 (e): exec | 1 | NA | String | keta_exec(right)
-(f): filter | 2 | Iterable | Block | keta_fitler(left, right)
+(f): filter | 2 | Iterable | Block | keta_filter(left, right)
 (g): generate exclusive range | 1 | NA | Number | range(0, right)
 (h): hack/stride | 2 | Iterable | Iterable(Number, Number) | left[right[0]:right[1]]
 (i): loop variable 
@@ -97,6 +97,6 @@ Command | Description | Arity | Left | Right | Pythonish Representation
 (y): loop variable
 (z): z(s)leep | 1 | NA | Number | time.sleep(right)
 ({): Start a block
-(|): Seperate items
+(|): Separate items
 (}): End a block
 (~): Random number
