@@ -1,4 +1,4 @@
-Operators shown here are purely for design experimentation and maynot reflect the final system of operators
+Operators shown here are purely for design experimentation and may not reflect the final system of operators:
 
 ## Make me a square!
 
@@ -14,7 +14,7 @@ Expands to:
 
 ## Output Distinct Factor Cubiods
 
-Keg didn't participate in this challenge
+Keg didn't participate in this challenge.
 
     *R=
     F?f^
@@ -31,7 +31,7 @@ Psuedo:
 
 ## Swap good and bad
 
-Keg got 7 bytes on this challenge (first place btw)
+Keg got 7 bytes on this challenge (first place incidentally).
 
     -"....
 
@@ -41,7 +41,7 @@ Note that this uses a reverse token flag. But that's what the keg answer does.
 
 ## N(e(s(t))) a string
 
-Keg got 12 bytes
+Keg got 12 bytes.
 
     M\(+\)*!
  
@@ -52,7 +52,7 @@ Keg got 12 bytes
 8 bytes (Ket) vs 12 bytes (Keg)
 
 ## DDoouubbllee  SSppeeaakk
-Keg got 3 bytes
+Keg got 3 bytes.
 
     i
     
